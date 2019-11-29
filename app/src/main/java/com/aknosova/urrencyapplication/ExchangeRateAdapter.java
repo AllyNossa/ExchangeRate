@@ -4,9 +4,13 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ExchangeRateAdapter {
+class ExchangeRateAdapter {
     private static ExchangeRateAdapter singleton = null;
     private IExchangeRate iExchangeRate;
+
+    private ExchangeRateAdapter() {
+        iExchangeRate = createAdapter();
+    }
 
     static ExchangeRateAdapter getSingletone() {
         if (singleton == null) {
@@ -24,6 +28,7 @@ public class ExchangeRateAdapter {
         OkHttpClient clientOkHttp = new OkHttpClient.Builder().build();
         Retrofit adapter = new Retrofit.Builder()
                 .client(clientOkHttp)
+                .baseUrl("https://www.cbr-xml-daily.ru/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

@@ -14,6 +14,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressWarnings("NullableProblems")
 public class MainActivity extends AppCompatActivity {
     private TextView rateDataText;
 
@@ -24,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
 
         rateDataText = findViewById(R.id.data_text);
         updateData();
-
-
-
-
     }
 
     private void updateData() {
@@ -38,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
                     rateDataText.setText(R.string.error_server);
                 }
 
-                renderRate(response.body());
+                if (response.body() != null) {
+                    renderRate(response.body());
+                }
             }
 
             @Override
@@ -50,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void renderRate(ExchangeRateModel exchangeRateRequest) {
-        setDollarRate(exchangeRateRequest.valute.value);
+        setDollarRate(exchangeRateRequest.valute.usd.value);
     }
 
     private void setDollarRate(float value) {
-        String currentValue = String.format(Locale.getDefault(), "%.0f", value);
+        String currentValue = String.format(Locale.getDefault(), "%.4f", value);
         rateDataText.setText(currentValue);
 
     }

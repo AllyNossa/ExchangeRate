@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface IExchangeRate {
-    @GET("https://www.cbr-xml-daily.ru/daily_json.js")
+    @GET("daily_json.js")
     Call<ExchangeRateModel>loadData();
 }
