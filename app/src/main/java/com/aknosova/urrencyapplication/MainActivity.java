@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDollarRate(float value) {
-        String currentValue = String.format(Locale.getDefault(), "%.4f", value);
+        String currentValue = String.format(Locale.getDefault(), "%.2f", value);
         rateDataText.setText(currentValue);
 
     }
