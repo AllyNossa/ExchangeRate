@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">СurrencyApplication</string>
-    <string name="exchange_rate">Курс доллара</string>
+    <string name="exchange_rate_dollar">Доллар</string>
+    <string name="exchange_rate_euro">Евро</string>
     <string name="internet_error">Нет подлючения к сети</string>
     <string name="error_server">Ошибка обработки запроса</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="tofay">Сегодня</string>
 </resources>
